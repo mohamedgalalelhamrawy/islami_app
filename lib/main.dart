@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/screens/home.dart';
+import 'package:islami_app/screens/home/home.dart';
 import 'package:islami_app/screens/splash.dart';
 
 void main() {

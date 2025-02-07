@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:islami_app/screens/home.dart';
+import 'package:islami_app/screens/home/home.dart';
 import 'package:islami_app/utils/app_assets.dart';
 
 class Splash extends StatefulWidget {
