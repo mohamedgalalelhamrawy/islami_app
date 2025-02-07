@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         Splash.routeName : (context) => const Splash(),
         HomeScreen.routeName : (context) => const HomeScreen()
       },
-     initialRoute: Splash.routeName, 
+     initialRoute: HomeScreen.routeName, 
     );
   }
 }
