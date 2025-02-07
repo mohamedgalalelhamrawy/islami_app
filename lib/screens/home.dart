@@ -3,21 +3,47 @@ import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key}); 
+ 
   static String routeName = "homeScreen";
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+   static int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppAssets.backgroundImage))),
+      decoration: const BoxDecoration(
+          image:  DecorationImage(image: AssetImage(AppAssets.backgroundImage))),
       child: Scaffold(
+        bottomNavigationBar: Theme(
+          data: ThemeData(canvasColor: AppColors.primary),
+          child: BottomNavigationBar(
+           selectedIconTheme: IconThemeData(size: 36),
+           unselectedIconTheme:IconThemeData(size: 32), 
+            selectedItemColor: AppColors.accent,
+            currentIndex: selectedIndex ,
+            selectedLabelStyle: AppStyles.iconlabel,
+            onTap: (value) {
+              selectedIndex = value;
+              setState(() {});
+            },
+            items: [
+            BottomNavigationBarItem(icon: ImageIcon(AssetImage(AppAssets.iconQuran)),label: "Quran"),
+            BottomNavigationBarItem(icon: ImageIcon(AssetImage(AppAssets.iconHadeth)),label: "Hadeth"),
+            BottomNavigationBarItem(icon: ImageIcon(AssetImage(AppAssets.iconRadio)),label: "Radio"),
+            BottomNavigationBarItem(icon: ImageIcon(AssetImage(AppAssets.iconSebha)),label: "Sebha")
+          ]),
+        ),
         backgroundColor: AppColors.transparentColor,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: AppColors.transparentColor,
-          title: Text(
+          title: const Text(
             "اسلامي",
             style: AppStyles.appBarTextstyle,
           ),
@@ -80,7 +106,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Divider dividorMethod() => Divider(
+  Divider dividorMethod() => const Divider(
         thickness: 2,
         color: AppColors.primary,
       );
