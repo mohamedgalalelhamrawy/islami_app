@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 selectedIndex = value;
                 setState(() {});
               },
-              items: [
+              items: const [
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(AppAssets.iconQuran)),
                     label: "Quran"),
@@ -62,65 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           centerTitle: true,
         ),
-        body: Column(
-          children: [
-            Expanded(flex: 1, child: Image.asset(AppAssets.quranLogo)),
-            dividorMethod(),
-            const Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    "عدد الايات",
-                    style: AppStyles.titles,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    "اسم السورة",
-                    style: AppStyles.titles,
-                    textAlign: TextAlign.center,
-                  ),
-                )
-              ],
-            ),
-            dividorMethod(),
-            Expanded(
-                flex: 3,
-                child: ListView.separated(
-                  separatorBuilder: (context, index) {
-                    return dividorMethod();
-                  },
-                  itemCount: 114,
-                  itemBuilder: (context, index) {
-                    return const Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            "عدد الايات",
-                            style: AppStyles.titles,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            "اسم السورة",
-                            style: AppStyles.titles,
-                            textAlign: TextAlign.center,
-                          ),
-                        )
-                      ],
-                    );
-                  },
-                ))
-          ],
-        ),
+        body: tabs[selectedIndex]
       ),
     );
   }
 
-  Divider dividorMethod() => const Divider(
-        thickness: 2,
-        color: AppColors.primary,
-      );
+
 }
