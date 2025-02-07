@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:islami_app/screens/home/widgets/sura_name_item.dart';
 import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
@@ -25,14 +26,14 @@ class Quran extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          "عدد الايات",
+                          "اسم السورة",
                           style: AppStyles.titles,
                           textAlign: TextAlign.center,
                         ),
                       ),
                       Expanded(
                         child: Text(
-                          "اسم السورة",
+                         "عدد الايات",
                           style: AppStyles.titles,
                           textAlign: TextAlign.center,
                         ),
@@ -48,24 +49,7 @@ class Quran extends StatelessWidget {
                       },
                       itemCount: Constants.suraNames.length,
                       itemBuilder: (context, index) {
-                        return  Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                Constants.suraverses[index].toString(),
-                                style: AppStyles.titles,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                Constants.suraNames[index],
-                                style: AppStyles.titles,
-                                textAlign: TextAlign.center,
-                              ),
-                            )
-                          ],
-                        );
+                        return SuraNameItem(name:  Constants.suraNames[index], verses:Constants.suraverses[index],index: index,);
                       },
                     ),
                   )
