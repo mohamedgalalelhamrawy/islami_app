@@ -62,7 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           centerTitle: true,
         ),
-        body: tabs[selectedIndex]
+        body: Padding(
+          padding: EdgeInsets.zero,
+          child: tabs[selectedIndex],
+        )
       ),
     );
   }
