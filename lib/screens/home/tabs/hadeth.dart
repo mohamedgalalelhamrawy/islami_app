@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/screens/home/models/hadeth.dart';
+import 'package:islami_app/screens/home/widgets/item_hadeth_name.dart';
 import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
@@ -17,6 +18,9 @@ class _HadethState extends State<Hadeth> {
   List<Hadethmodel> ahadeth = [];
     @override
     Widget build(BuildContext context) {
+      if(ahadeth.isEmpty){
+        loadHadethFile();
+      }
       return Column(
         children: [
           Expanded( 
@@ -31,9 +35,10 @@ class _HadethState extends State<Hadeth> {
               separatorBuilder: (context, index) {
                 return dividorMethod();
               },
-              itemCount: 15,
+              itemCount: ahadeth.length,
               itemBuilder: (context, index) {
-                return Text("الحديث الاول",style: AppStyles.titles,textAlign: TextAlign.center,);
+                return ahadeth.isEmpty ?  Center(child: CircularProgressIndicator(color: AppColors.primary,)) : 
+                 ItemHadethName(hadeth: ahadeth[index]);
               },),
           )
         ],
@@ -54,7 +59,7 @@ class _HadethState extends State<Hadeth> {
               hadethLines.removeAt(0);
               Hadethmodel hadeth = Hadethmodel(content: hadethLines, title: title);
               ahadeth.add(hadeth);
-              setState(() {});
             }
+           setState(() {});  
       }
 }
