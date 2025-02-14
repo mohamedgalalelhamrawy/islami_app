@@ -5,6 +5,7 @@ import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
 import 'package:islami_app/utils/constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Quran extends StatelessWidget {
   const Quran({super.key});
@@ -22,18 +23,18 @@ class Quran extends StatelessWidget {
                   Column(
                      children: [
                   dividorMethod(),
-                  const Row(
+                  Row(
                     children: [
                       Expanded(
                         child: Text(
-                          "اسم السورة",
+                          AppLocalizations.of(context)!.sura_name,
                           style: AppStyles.titles,
                           textAlign: TextAlign.center,
                         ),
                       ),
                       Expanded(
                         child: Text(
-                         "عدد الايات",
+                         AppLocalizations.of(context)!.number_of_verses,
                           style: AppStyles.titles,
                           textAlign: TextAlign.center,
                         ),

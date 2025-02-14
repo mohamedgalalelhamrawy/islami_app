@@ -6,6 +6,7 @@ import 'package:islami_app/screens/home/tabs/sebha.dart';
 import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,27 +38,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 selectedIndex = value;
                 setState(() {});
               },
-              items: const [
+              items:  [
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(AppAssets.iconQuran)),
-                    label: "Quran"),
+                    label: AppLocalizations.of(context)!.quran),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(AppAssets.iconHadeth)),
-                    label: "Hadeth"),
+                    label: AppLocalizations.of(context)!.hadeth),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(AppAssets.iconRadio)),
-                    label: "Radio"),
+                    label: AppLocalizations.of(context)!.radio),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(AppAssets.iconSebha)),
-                    label: "Sebha")
+                    label: AppLocalizations.of(context)!.sebha)
               ]),
         ),
         backgroundColor: AppColors.transparentColor,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: AppColors.transparentColor,
-          title: const Text(
-            "اسلامي",
+          title:  Text(
+            AppLocalizations.of(context)!.app_title,
             style: AppStyles.appBarTextstyle,
           ),
           centerTitle: true,

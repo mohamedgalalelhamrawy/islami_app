@@ -3,6 +3,7 @@
 import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Sebha extends StatefulWidget {
     const Sebha({super.key});
@@ -22,7 +23,7 @@ class _SebhaState extends State<Sebha> {
           children: [
             Image.asset(AppAssets.sebhaLogo),
             SizedBox(height: MediaQuery.of(context).size.width*0.1,),
-            Text("عدد التسبيحات",style: AppStyles.titles),
+            Text(AppLocalizations.of(context)!.number_of_tasbihat,style: AppStyles.titles),
              SizedBox(height: MediaQuery.of(context).size.width*0.07,),
             ElevatedButton(onPressed: (){},
             style: ElevatedButton.styleFrom(
