@@ -3,6 +3,7 @@ import 'package:islami_app/screens/home/tabs/hadeth.dart';
 import 'package:islami_app/screens/home/tabs/quran.dart';
 import 'package:islami_app/screens/home/tabs/radio.dart';
 import 'package:islami_app/screens/home/tabs/sebha.dart';
+import 'package:islami_app/screens/home/tabs/settings.dart';
 import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
@@ -18,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Widget> tabs = [Quran(), Hadeth(), RadioTab(), Sebha()];
+  List<Widget> tabs = [Quran(), Hadeth(), RadioTab(), Sebha(),Settings()];
   static int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     label: AppLocalizations.of(context)!.radio),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(AppAssets.iconSebha)),
-                    label: AppLocalizations.of(context)!.sebha)
+                    label: AppLocalizations.of(context)!.sebha),
+                 BottomNavigationBarItem(
+                    icon: Icon(Icons.settings),
+                    label: AppLocalizations.of(context)!.settings)    
               ]),
         ),
         backgroundColor: AppColors.transparentColor,
