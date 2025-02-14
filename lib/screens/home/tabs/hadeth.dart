@@ -1,12 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:islami_app/screens/home/models/hadeth.dart';
 import 'package:islami_app/screens/home/widgets/item_hadeth_name.dart';
 import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class Hadeth extends StatefulWidget {
     const Hadeth({super.key});
@@ -19,6 +21,7 @@ class _HadethState extends State<Hadeth> {
   List<Hadethmodel> ahadeth = [];
     @override
     Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
       if(ahadeth.isEmpty){
         loadHadethFile();
       }
@@ -28,7 +31,9 @@ class _HadethState extends State<Hadeth> {
             flex: 4,
             child: Image.asset(AppAssets.hadethLogo)),
           dividorMethod(),
-          Text(AppLocalizations.of(context)!.hadeth_name,style: AppStyles.titles,textAlign: TextAlign.center,),
+          Text(AppLocalizations.of(context)!.hadeth_name,
+          style:provider.appTheme == ThemeMode.light? AppStyles.titles :AppStyles.titles.copyWith(color: Colors.white),
+          textAlign: TextAlign.center,),
           dividorMethod(), 
           Expanded(
             flex: 9,

@@ -1,17 +1,20 @@
 
 import 'package:flutter/material.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:islami_app/screens/home/widgets/sura_name_item.dart';
 import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
 import 'package:islami_app/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class Quran extends StatelessWidget {
   const Quran({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return  Column(
           children: [
             Expanded(flex:4, child: Image.asset(AppAssets.quranLogo)),
@@ -28,14 +31,14 @@ class Quran extends StatelessWidget {
                       Expanded(
                         child: Text(
                           AppLocalizations.of(context)!.sura_name,
-                          style: AppStyles.titles,
+                          style: provider.appTheme == ThemeMode.light? AppStyles.titles :AppStyles.titles.copyWith(color: Colors.white) ,
                           textAlign: TextAlign.center,
                         ),
                       ),
                       Expanded(
                         child: Text(
                          AppLocalizations.of(context)!.number_of_verses,
-                          style: AppStyles.titles,
+                          style: provider.appTheme == ThemeMode.light? AppStyles.titles :AppStyles.titles.copyWith(color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
                       )

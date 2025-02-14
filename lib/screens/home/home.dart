@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:islami_app/screens/home/tabs/hadeth.dart';
 import 'package:islami_app/screens/home/tabs/quran.dart';
 import 'package:islami_app/screens/home/tabs/radio.dart';
@@ -8,6 +9,7 @@ import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,16 +25,19 @@ class _HomeScreenState extends State<HomeScreen> {
   static int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppAssets.backgroundImage))),
+      decoration: BoxDecoration(
+          image: DecorationImage(image: provider.appTheme == ThemeMode.light ? AssetImage(AppAssets.backgroundImage)
+          :AssetImage(AppAssets.darkBackgroundImage)
+          )
+          ),
       child: Scaffold(
         bottomNavigationBar: Theme(
-          data: ThemeData(canvasColor: AppColors.primary),
+          data: ThemeData(canvasColor: provider.appTheme == ThemeMode.light ? AppColors.primary : AppColors.primaryDark),
           child: BottomNavigationBar(
               selectedIconTheme: IconThemeData(size: 36),
               unselectedIconTheme: IconThemeData(size: 32),
-              selectedItemColor: AppColors.accent,
               currentIndex: selectedIndex,
               selectedLabelStyle: AppStyles.iconlabel,
               onTap: (value) {

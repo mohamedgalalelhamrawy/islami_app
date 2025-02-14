@@ -13,5 +13,15 @@ class AppConfigProvider extends ChangeNotifier{
       appLanguge = userLanguage;
       notifyListeners();
   }
+  //  (2)theme provider
+
+    ThemeMode appTheme = ThemeMode.light;
+  void changetheme (ThemeMode userTheme){
+    if(appTheme == userTheme){
+      return ;
+    }
+    appTheme = userTheme ;
+    notifyListeners();
+  }
 
 }

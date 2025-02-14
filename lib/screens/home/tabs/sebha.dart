@@ -1,9 +1,11 @@
 
  import 'package:flutter/material.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:islami_app/utils/app_assets.dart';
 import 'package:islami_app/utils/app_colors.dart';
 import 'package:islami_app/utils/app_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class Sebha extends StatefulWidget {
     const Sebha({super.key});
@@ -17,13 +19,15 @@ class _SebhaState extends State<Sebha> {
       String tasbee7 = "سبحان الله";
     @override
     Widget build(BuildContext context) {
+        var provider = Provider.of<AppConfigProvider>(context);
       return Container(
         width: double.infinity,
         child: Column(
           children: [
             Image.asset(AppAssets.sebhaLogo),
             SizedBox(height: MediaQuery.of(context).size.width*0.1,),
-            Text(AppLocalizations.of(context)!.number_of_tasbihat,style: AppStyles.titles),
+            Text(AppLocalizations.of(context)!.number_of_tasbihat,
+            style:  provider.appTheme == ThemeMode.light? AppStyles.titles :AppStyles.titles.copyWith(color: Colors.white) ,),
              SizedBox(height: MediaQuery.of(context).size.width*0.07,),
             ElevatedButton(onPressed: (){},
             style: ElevatedButton.styleFrom(
@@ -57,7 +61,8 @@ class _SebhaState extends State<Sebha> {
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.primary,
                 ),
-                child: Text(tasbee7,style: AppStyles.titles.copyWith(color: AppColors.whiteColor,fontWeight: FontWeight.w800),),
+                child: Text(tasbee7,
+                style:  AppStyles.titles.copyWith(color: AppColors.whiteColor,fontWeight: FontWeight.w800),),
               ),
             ) 
           ],
