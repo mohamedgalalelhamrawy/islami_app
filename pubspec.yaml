@@ -38,6 +38,7 @@ dependencies:
   intl: any
   flutter_localizations:
     sdk: flutter
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
